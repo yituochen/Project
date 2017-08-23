@@ -1,0 +1,33 @@
+<!-- not sure if i gonna let user edit their post or commant  -->
+
+<% if  curren_user  %>     <!-- only sign in can add command -->
+
+
+<h2> edit comments </h2>
+
+
+<%= form_for [@article, @article.comment.build], method: :put , url: article_comment_index_path(@article,@comment) do |newcomment| %>  
+<p>  
+<%= newcomment.label :comment%>
+<%= newcomment.text_area :text %>
+ </p>
+
+<p>  
+
+<%= newcomment.submit %>
+ </p>
+
+<% end %>
+
+
+<% else %>
+	
+	<p> Please Sign In to add comments </p>
+	
+	<%= link_to "Sign In" , new_session_path %>
+
+	<%= link_to "Sign up" , new_login_path %>
+	
+	<% render(template: "sessions/new.html.erb") %>  
+
+<% end %>

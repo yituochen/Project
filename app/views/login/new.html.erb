@@ -1,0 +1,80 @@
+
+ <header class="navbar navbar-fixed-top navbar-inverse">
+  
+    <div style="color:white" id="logo">StudentXStudent</div>
+
+  <div class="container-fluid"> 
+  
+  <div style="color:white">
+
+  </div>
+  <nav> 
+  
+  <ul class="nav navbar-nav navbar-right">
+
+
+
+
+  <li><%= link_to 'home', root_path %></li>
+
+  <li><%= link_to "Sign In" , new_session_path %></li>
+
+
+
+  
+  </ul>
+  </nav>
+  </div>
+</header>
+
+
+<section class="container-fluid" style="margin-top: 150px;">
+<h1 style="font-style: italic;"> Create New User </h1>
+
+<%= form_for @user, url: login_index_path(@user) do |f| %>
+  <% if @user.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@user.errors.count, "error") %> prohibited this user from being saved:</h2>
+
+      <ul>
+      <% @user.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+   <% end %>
+
+<!--   <div> 
+  <ul>
+  <li> UserName cannot be empty </li>
+  <li> Email should be invalid</li>
+  <li> Password show be right</li>
+  </ul>
+  </div> -->
+  
+  <div>
+    <%= f.label :Email %><br>
+    <%= f.text_field :Email %>
+  </div>
+  <div>
+    <%= f.label :Name %><br>
+    <%= f.text_field :Name %>
+  </div>
+
+   <div>
+    <%= f.label :Password %><br>
+    <%= f.text_field :password %>
+  </div>
+
+    <div >
+    <%= f.label :password_confirmation %><br>
+    <%= f.password_field :password_confirmation %>
+    </div>
+  
+  <div>
+    <%= f.submit %>
+  </div>
+
+<% end %>
+
+</section>

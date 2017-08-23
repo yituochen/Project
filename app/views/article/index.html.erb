@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<head> </head>
+
+<body>
+
+<!-- this project is for language programming class, the author is Ted Chen  -->
+
+
+ <header class="navbar navbar-fixed-top navbar-inverse">
+	
+  	<div style="color:white" id="logo">StudentXStudent</div>
+
+	<div class="container-fluid"> 
+	
+	<div style="color:white">
+	<% if  curren_user  %>
+   	
+     welcome: <%=  curren_user.Name %>
+ 
+
+	<%= link_to "Log out" , logout_path , method: "delete"%> 
+	
+	<%= link_to "Profile" , profile_index_path %>
+	
+	<% end %>
+	</div>
+	<nav> 
+	
+	<ul class="nav navbar-nav navbar-right">
+
+
+
+
+	<li><%= link_to 'home', root_path %></li>
+
+	<li><%= link_to "Sign In" , new_session_path %></li>
+
+	<li><%= link_to "Sign up" , new_login_path %></li>
+
+	<li><%= link_to "about" %> </li>
+
+
+	
+	</ul>
+	</nav>
+	</div>
+</header>
+
+
+<section class="container-fluid" style="margin-top: 150px;">
+
+
+	<div style="margin-right:300px; margin-left: 300px;">
+	<p style="font-size: 30px;"> <%= link_to 'New Aricle', new_article_path %> </p>
+	<%  @articles.each  do |article|%>
+	
+	
+	
+	<div class="panel panel-default">
+  	<div class="panel-heading"> Question: <%= article.Title %> </div>
+   	<div class="panel-body"> <%= link_to 'show content', article %></div>
+  	</div>
+	<% end %>
+	</div>
+
+   
+</section>
+
+
+
+
+
+</body>
+</html>

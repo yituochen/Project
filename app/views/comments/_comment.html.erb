@@ -1,0 +1,20 @@
+
+
+ <div class="panel panel-default">
+ <div class="panel-heading"> <p>Author:</p>  <% @CommentUser = User.find(comment.user_id) %> 
+<%= @CommentUser.Name%> 
+  created   
+<%= time_ago_in_words(comment.created_at)%> ago </div>
+ <div class="panel-body"><div>
+<%if comment.document_file_name %>
+<%= image_tag comment.document.url(:medium) %>
+<% else %>
+<% end %>
+<%= comment.text %>  </div>
+ </div>
+
+
+
+
+
+

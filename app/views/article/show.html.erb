@@ -1,0 +1,86 @@
+ <header class="navbar navbar-fixed-top navbar-inverse">
+	
+  	<div style="color:white" id="logo">StudentXStudent</div>
+
+	<div class="container-fluid"> 
+	
+	<div style="color:white">
+	<% if  curren_user  %>
+   	
+     welcome: <%=  curren_user.Name %>
+ 
+
+	<%= link_to "Log out" , logout_path , method: "delete"%> 
+	
+	<%= link_to "Profile" , profile_index_path %>
+	
+	<% end  %>
+	</div>
+	<nav> 
+	
+	<ul class="nav navbar-nav navbar-right">
+
+
+
+
+	<li><%= link_to 'home', root_path %></li>
+
+	<li><%= link_to "Sign In" , new_session_path %></li>
+
+	<li><%= link_to "Sign up" , new_login_path %></li>
+
+
+	
+	</ul>
+	</nav>
+	</div>
+</header>
+
+<section class="container" style="margin-top: 200px;">
+
+  <div class="panel panel-default">
+  <div class="panel-heading"> <p>Question:</p> </div>
+   <div class="panel-body"><%= @article.Title %></div>
+  </div>
+
+  	<% if @article.document_file_name %>
+    <div class="panel panel-default">
+  	
+   	<div class="panel-body"><%= image_tag @article.document.url(:medium) %></div>
+  	</div>
+	<% else %>
+	<% end %>
+
+
+	 <div class="panel panel-default">
+  	<div class="panel-heading"> <p>Content:</p> </div>
+   	<div class="panel-body"><%= @article.Constant %> </div>
+  	</div>
+
+  	<div class="panel panel-default">
+  	<div class="panel-heading"> <p>Author:</p> </div>
+   	<div class="panel-body"><%= @author.Name %>  </div>
+  	</div>
+
+
+
+  	<div class="panel panel-default">
+  	<div class="panel-heading"> <h3> comments</h3> <br/>
+  	<p> <%= @article.comment.count%>  comments <p></div>
+   	<div class="panel-body"> <%= render @article.comment %>  </div>
+  	</div>
+
+
+	
+
+
+
+
+	<%= render 'comments/form' %>  
+<!-- this is user render to add new comment  -->
+
+
+
+<div>
+
+</section>

@@ -1,0 +1,77 @@
+ <header class="navbar navbar-fixed-top navbar-inverse">
+	
+  	<div style="color:white" id="logo">StudentXStudent</div>
+
+	<div class="container-fluid"> 
+	
+	<div style="color:white">
+	<% if  curren_user  %>
+   	
+     welcome: <%=  curren_user.Name %>
+ 
+
+	<%= link_to "Log out" , logout_path , method: "delete"%> 
+	
+	<%= link_to "Profile" , profile_index_path %>
+	
+	
+	</div>
+	<nav> 
+	
+	<ul class="nav navbar-nav navbar-right">
+
+
+
+
+	<li><%= link_to 'home', root_path %></li>
+
+	<li><%= link_to "Sign In" , new_session_path %></li>
+
+	<li><%= link_to "Sign up" , new_login_path %></li>
+
+
+	
+	</ul>
+	</nav>
+	</div>
+</header>
+
+<section class="container" style="margin-top: 200px;">
+
+<%= form_for @article, url: article_index_path(@article)  do |f|%>
+
+  <div class="panel panel-default">
+  <div class="panel-heading"> <%= f.label :document %><br> </div>
+   <div class="panel-body"><%= f.file_field :document %></div>
+  </div>
+
+  <div class="panel panel-default">
+  <div class="panel-heading"> <%= f.label :Title %><br> </div>
+   <div class="panel-body"><%= f.text_field :Title %></div>
+  </div>
+
+
+  <div class="panel panel-default">
+  <div class="panel-heading"> <%= f.label :Content %><br> </div>
+   <div class="panel-body"><%= f.text_area :Constant %></div>
+  </div>
+
+
+<div>
+	<%= f.submit%> 
+</div>
+
+<%end%>
+
+
+<% else %>
+ 	
+ 	<p> please sign in to create poster</p>
+ 	
+ 	<%= link_to "Sign In" , new_session_path %>
+
+	<%= link_to "Sign up" , new_login_path %>
+
+
+<% end %>
+</section>

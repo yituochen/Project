@@ -1,0 +1,78 @@
+ <header class="navbar navbar-fixed-top navbar-inverse">
+	
+  	<div style="color:white" id="logo">StudentXStudent--Profile page</div>
+
+	<div class="container-fluid"> 
+	
+	<div style="color:white">
+	<% if  curren_user  %>
+   	
+     welcome: <%=  curren_user.Name %>
+ 
+
+	<%= link_to "Log out" , logout_path , method: "delete"%> 
+	
+	<%= link_to "Profile" , profile_index_path %>
+	
+	<% end  %>
+	</div>
+	<nav> 
+	
+	<ul class="nav navbar-nav navbar-right">
+
+
+
+
+	<li><%= link_to 'home', root_path %></li>
+
+	<li><%= link_to "Sign In" , new_session_path %></li>
+
+	<li><%= link_to "Sign up" , new_login_path %></li>
+
+
+	
+	</ul>
+	</nav>
+	</div>
+</header>
+
+
+<section class="container-fluid" style="margin-top:200px;">
+
+	<div style="margin-right:300px; margin-left: 300px;">
+	<h4 style="font-weight: bold;"> This is your aritlce </h4>
+<%  @articles.each  do |article|%>
+	
+	<div class="panel panel-default">
+    <div class="panel-heading"> <%= article.Title %> </div>
+    <div class="panel-body"><%= link_to 'show content', article %></div>
+    </div>
+
+
+
+	<% end %>
+
+	</div>
+
+</section> 
+
+
+<section class="container-fluid" style="margin-top: 20px;">
+
+
+
+	<div style="margin-right:300px; margin-left: 300px;">
+	<h4 style="font-weight: bold;"> This is the article you comment </h4>
+	<%  @commentarticles.each  do |commentarticle| %>
+	
+	<div class="panel panel-default">
+    <div class="panel-heading"> <%= commentarticle.Title %> </div>
+    <div class="panel-body"><%= link_to 'show content', commentarticle%></div>
+    </div>
+
+	<% end %>
+	</div>
+
+
+</section> 
+

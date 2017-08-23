@@ -1,0 +1,59 @@
+
+ <header class="navbar navbar-fixed-top navbar-inverse">
+  
+  <div style="color:white" id="logo">StudentXStudent</div>
+
+  <div class="container-fluid"> 
+  
+  <div style="color:white">
+
+  <nav> 
+  
+  <ul class="nav navbar-nav navbar-right">
+
+
+
+
+  <li><%= link_to 'home', root_path %></li>
+
+
+
+  <li><%= link_to "Sign up" , new_login_path %></li>
+
+
+  
+  </ul>
+  </nav>
+  </div>
+</header>
+
+
+<section  class="container-fluid" style="margin-top:150px;">
+<h1 style="font-style: italic;"> Sign In</h1>
+<% flash.each do |key, value| %>
+  <div class ="alert alert-<%= key %>"><%= value %> </div>
+<%end%>
+
+<div>
+
+<%= form_for(:session, url: sessions_path) do |f|  %>
+
+
+  <div class="panel panel-default">
+  <div class="panel-heading"> <%= f.label :Email %> </div>
+  <div class="panel-body"><%= f.text_field :Email %></div>
+  </div>
+
+
+  <div class="panel panel-default">
+  <div class="panel-heading"> <%= f.label :Password %></div>
+  <div class="panel-body"><%= f.text_field :password_digest %></div>
+  </div>
+
+  <div>
+    <%= f.submit %>
+  </div>
+ 
+<% end %>
+</div>
+</section>

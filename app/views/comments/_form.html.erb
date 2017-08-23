@@ -1,0 +1,41 @@
+
+<!-- this is use partial to rendered and combine with aricle_show which let article and command combined. [@article, @comemnt] is add one doc to other doc. only can added when user is signed in  -->
+
+
+<% if  curren_user  %>     <!-- only sign in can add command -->
+
+
+<h2> Add comments </h2>
+
+
+<%= form_for [@article, @article.comment.build], method: :post , url: article_comment_index_path(@article,@comment) do |newcomment| %>  
+
+	  <div class="panel panel-default">
+  <div class="panel-heading"> <%= newcomment.label :document %><br> </div>
+   <div class="panel-body"><%= newcomment.file_field :document %></div>
+  </div>
+ 
+ 	  <div class="panel panel-default">
+  <div class="panel-heading"> <%= newcomment.label :comment%><br> </div>
+   <div class="panel-body"><%= newcomment.text_area :text %></div>
+  </div>
+ 
+<p>  
+
+<%= newcomment.submit %>
+ </p>
+
+<% end %>
+
+
+<% else %>
+	
+	<p> Please Sign In to add comments </p>
+	
+	<%= link_to "Sign In" , new_session_path %>
+
+	<%= link_to "Sign up" , new_login_path %>
+	
+	<% render(template: "sessions/new.html.erb") %>  
+
+<% end %>
